@@ -29,4 +29,21 @@ public class BinarySearchTree<T extends Comparable<T>> {
         return root;
     }
 
+    public BinaryNode<T> search(T value) {
+        return search(root, value);
+    }
+
+    public BinaryNode<T> search(BinaryNode root, T value) {
+        if (root == null)
+            return null;
+        int compare = root.compareTo(value);
+        if (compare == 0) {
+            return root;
+        } else if (compare > 0) {
+            return search(root.left, value);
+        } else {
+            return search(root.right, value);
+        }
+    }
+
 }
