@@ -46,4 +46,18 @@ public class BinarySearchTree<T extends Comparable<T>> {
         }
     }
 
+    public boolean delete(T value) {
+        return delete(root, value);
+    }
+
+    public boolean delete(BinaryNode root, T value) {
+        if(root==null)
+            return false;
+        if (root.compareTo(value) == 0) {
+            if()
+
+        }
+        return false;
+    }
+
 }
