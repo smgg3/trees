@@ -2,15 +2,29 @@ package tree;
 
 public class BinarySearchTree<T extends Comparable<T>> {
 
-    BinaryNode root = null;
-    int size;
+    static BinaryNode root = null;
+
+    public static int size = 0;
+
+    public BinarySearchTree() {
+
+    }
 
     public BinarySearchTree(T value) {
         this.root = new BinaryNode(value);
+        size++;
     }
 
     public BinaryNode<T> insert(T value) {
-        root = insertRecursively(root, value);
+        size++;
+        return insertRecursively(root, value);
+    }
+
+    public BinaryNode<T> insertListOfValues(T[] values) {
+        for (T value : values) {
+            size++;
+            insertRecursively(root, value);
+        }
         return root;
     }
 
@@ -47,17 +61,53 @@ public class BinarySearchTree<T extends Comparable<T>> {
     }
 
     public boolean delete(T value) {
-        return delete(root, value);
-    }
-
-    public boolean delete(BinaryNode root, T value) {
-        if(root==null)
+        if (delete(root, value)) {
+            size--;
+            return true;
+        } else
             return false;
-        if (root.compareTo(value) == 0) {
-            if()
-
-        }
-        return false;
     }
 
+    public boolean delete(BinaryNode<?> root, T value) {
+        if (root == null)
+            return false;
+        BinaryNode replacer = null;
+        if (root.compareTo(value) == 0) {
+            if (root.left != null) {
+                replacer = predecessor(root.left);
+            } else if (root.right != null) {
+                replacer = successor(root.right);
+            }
+            replacer.left = root.left;
+            replacer.right = root.right;
+            root = replacer;
+            return true;
+        } else if (root.compareTo(value) > 0) {
+            return delete(root.left, value);
+        } else {
+            return delete(root.right, value);
+        }
+    }
+
+    private BinaryNode successor(BinaryNode<?> right) {
+        if (root.left == null) {
+            BinaryNode<?> temp = root;
+            root = root.right;
+            temp.left = null;
+            temp.right = null;
+            return temp;
+        } else
+            return successor(root.left);
+    }
+
+    private BinaryNode<?> predecessor(BinaryNode<?> left) {
+        if (root.right == null) {
+            BinaryNode<?> temp = root;
+            root = root.left;
+            temp.left = null;
+            temp.right = null;
+            return temp;
+        } else
+            return predecessor(root.right);
+    }
 }
