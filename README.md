@@ -7,6 +7,9 @@ Solutions to *Tree construction and it's applications*.
 * [BinaryTree](./src/tree/BinaryTree.java)
 * [BinarySearchTree](./src/tree/BinarySearchTree.java)
 
+## Tests
+* [TestBinarySearchTree](./src/test/TestBinarySearchTree.java)
+
 # Future Work
 
 
