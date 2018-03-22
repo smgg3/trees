@@ -2,7 +2,10 @@
 Solutions to *Tree construction and it's applications*.
 
 ## Construction
-* [Node](./src/tree/BinaryNode.java)
+* [Node](./src/tree/Node.java)
+* [BinaryNode](./src/tree/BinaryNode.java)
+* [BinaryTree](./src/tree/BinaryTree.java)
+* [BinarySearchTree](./src/tree/BinarySearchTree.java)
 
 # Future Work
 
